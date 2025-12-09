@@ -1,0 +1,167 @@
+.orbital-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+.orbital-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.orbital-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.orbital-ring-1 {
+  width: 160px;
+  height: 160px;
+}
+
+.orbital-ring-2 {
+  width: 220px;
+  height: 220px;
+}
+
+.orbital-ring-3 {
+  width: 280px;
+  height: 280px;
+}
+
+.orbital-ring-4 {
+  width: 340px;
+  height: 340px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.02);
+  }
+}
+
+.orbital-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.orbital-item-dynamic {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.orbital-item:hover,
+.orbital-item-dynamic:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+.orbital-item img,
+.orbital-item svg {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.orbital-item-1 {
+  animation: orbit1 15s linear infinite;
+}
+
+.orbital-item-2 {
+  animation: orbit2 17s linear infinite;
+}
+
+.orbital-item-3 {
+  animation: orbit3 19s linear infinite;
+}
+
+.orbital-item-4 {
+  animation: orbit4 21s linear infinite;
+}
+
+@keyframes orbit1 {
+  from {
+    transform: rotate(45deg) translateX(80px) rotate(-45deg);
+  }
+  to {
+    transform: rotate(405deg) translateX(80px) rotate(-405deg);
+  }
+}
+
+@keyframes orbit2 {
+  from {
+    transform: rotate(120deg) translateX(110px) rotate(-120deg);
+  }
+  to {
+    transform: rotate(480deg) translateX(110px) rotate(-480deg);
+  }
+}
+
+@keyframes orbit3 {
+  from {
+    transform: rotate(210deg) translateX(140px) rotate(-210deg);
+  }
+  to {
+    transform: rotate(570deg) translateX(140px) rotate(-570deg);
+  }
+}
+
+@keyframes orbit4 {
+  from {
+    transform: rotate(300deg) translateX(170px) rotate(-300deg);
+  }
+  to {
+    transform: rotate(660deg) translateX(170px) rotate(-660deg);
+  }
+}
