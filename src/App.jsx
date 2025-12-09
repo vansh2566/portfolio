@@ -15,7 +15,6 @@ function App() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [testimonialAnimate, setTestimonialAnimate] = useState(false);
   const [showDock, setShowDock] = useState(false);
-  const [activePage, setActivePage] = useState('Home');
   const roles = ['Video Editor', 'Graphic Designer'];
 
   const testimonials = [
@@ -95,20 +94,14 @@ function App() {
   };
   
   const items = [
-    { icon: <div style={{ fontSize: '18px', fontWeight: '700', color: 'white' }}>VS</div>, label: 'Logo', onClick: () => alert('Vansh Sharma!') },
-    { icon: <VscHome size={20} />, label: 'Home', onClick: () => setActivePage('Home') },
-    { icon: <VscAccount size={20} />, label: 'About', onClick: () => setActivePage('About') },
-    { icon: <VscProject size={20} />, label: 'Projects', onClick: () => setActivePage('Projects') },
-    { icon: <VscSymbolColor size={20} />, label: 'Skills', onClick: () => setActivePage('Skills') },
-    { icon: <VscBriefcase size={20} />, label: 'Experience', onClick: () => setActivePage('Experience') },
-    { icon: <VscComment size={20} />, label: 'Testimonials', onClick: () => setActivePage('Testimonials') },
-    { icon: <VscMail size={20} />, label: 'Contact', onClick: () => setActivePage('Contact') },
+    { icon: <VscHome size={20} />, label: 'Home', onClick: () => alert('Home!') },
+    { icon: <VscAccount size={20} />, label: 'About', onClick: () => alert('About!') },
+    { icon: <VscProject size={20} />, label: 'Projects', onClick: () => alert('Projects!') },
+    { icon: <VscSymbolColor size={20} />, label: 'Skills', onClick: () => alert('Skills!') },
+    { icon: <VscBriefcase size={20} />, label: 'Experience', onClick: () => alert('Experience!') },
+    { icon: <VscComment size={20} />, label: 'Testimonials', onClick: () => alert('Testimonials!') },
+    { icon: <VscMail size={20} />, label: 'Contact', onClick: () => alert('Contact!') },
   ];
-
-  const getActiveIcon = () => {
-    const activeItem = items.find(item => item.label === activePage);
-    return activeItem ? activeItem.icon : <VscHome size={20} />;
-  };
 
   return (
     <div className="App">
@@ -148,42 +141,58 @@ function App() {
         }}>
           Hey, I am <span style={{ color: '#FF9FFC' }}>Vansh</span>
         </h1>
-        <div style={{
-          height: '80px',
-          overflow: 'hidden',
-          position: 'relative'
-        }}>
-          <div style={{ 
-            transform: `translateY(-${currentRole * 80}px)`,
-            transition: 'transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)'
+        <div style={{ marginTop: '20px' }}>
+          <h2 style={{ 
+            background: 'linear-gradient(135deg, #FF9FFC 0%, #9333ea 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            fontSize: '80px', 
+            fontWeight: '700',
+            fontFamily: "'Big Shoulders Display', sans-serif",
+            margin: 0,
+            lineHeight: '1',
+            letterSpacing: '1px',
+            filter: 'drop-shadow(0 4px 8px rgba(147, 51, 234, 0.5))'
           }}>
-            {roles.map((role, index) => (
-              <h2 key={index} style={{ 
-                color: 'white', 
-                fontSize: '64px', 
-                fontWeight: '900',
-                fontFamily: "'Playfair Display', serif",
-                margin: 0,
-                padding: 0,
-                lineHeight: '80px',
-                height: '80px'
-              }}>
-                {role}
-              </h2>
-            ))}
+            Passionate
+          </h2>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginTop: '0px' }}>
+            <h3 style={{ 
+              color: 'white', 
+              fontSize: '36px', 
+              fontWeight: '400',
+              fontFamily: "'DM Serif Display', serif",
+              fontStyle: 'italic',
+              margin: 0,
+              lineHeight: '1'
+            }}>
+              video editor
+            </h3>
+            <span style={{
+              color: 'rgba(255, 255, 255, 0.8)',
+              fontSize: '20px',
+              fontWeight: '400',
+              fontFamily: 'Helvetica, Arial, sans-serif',
+              transform: 'translateY(4px)',
+              display: 'inline-block'
+            }}>
+              and a
+            </span>
           </div>
+          <h3 style={{ 
+            color: 'white', 
+            fontSize: '36px', 
+            fontWeight: '400',
+            fontFamily: "'DM Serif Display', serif",
+            fontStyle: 'italic',
+            margin: '5px 0 0 0',
+            lineHeight: '0.8',
+            paddingLeft: '40px'
+          }}>
+            Graphic Designer
+          </h3>
         </div>
-        <p style={{
-          color: 'rgba(255, 255, 255, 0.7)',
-          fontSize: '16px',
-          fontWeight: '400',
-          margin: '20px 0 0 0',
-          lineHeight: '1.6',
-          maxWidth: '500px'
-        }}>
-          Creating stunning visual stories through expert video editing and graphic design. 
-          Bringing your ideas to life with professional quality and creative excellence.
-        </p>
         
         <div style={{ display: 'flex', gap: '16px', marginTop: '30px', alignItems: 'center' }}>
           <button style={{
@@ -337,50 +346,52 @@ function App() {
         />
       </div>
       
-      {/* Active Page Indicator */}
-      <div
-        style={{
+      {/* Menu Icon - Always Visible */}
+      <div 
+        onMouseEnter={() => setShowDock(true)}
+        style={{ 
           position: 'fixed',
           top: '50%',
-          right: '76px',
+          right: 20,
           transform: 'translateY(-50%)',
           zIndex: 101,
-          background: 'rgba(0, 0, 0, 0.4)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          cursor: 'pointer',
+          width: '48px',
+          height: '48px',
           borderRadius: '12px',
-          padding: '10px',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
+          background: 'rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          width: '40px',
-          height: '40px',
-          color: 'white'
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          transition: 'all 0.3s ease',
+          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
         }}
       >
-        {getActiveIcon()}
+        <VscMenu style={{ fontSize: '24px', color: 'white' }} />
       </div>
 
-      {/* Navbar - Always Visible */}
-      <div
-        style={{
+      {/* Dock - Slides in on hover */}
+      <div 
+        onMouseEnter={() => setShowDock(true)}
+        onMouseLeave={() => setShowDock(false)}
+        style={{ 
           position: 'fixed',
           top: '50%',
-          right: '20px',
+          right: showDock ? 80 : -100,
           transform: 'translateY(-50%)',
-          zIndex: 101,
-          background: 'rgba(0, 0, 0, 0.4)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          borderRadius: '16px',
-          padding: '8px',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)'
+          zIndex: 100,
+          transition: 'right 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+          opacity: showDock ? 1 : 0
         }}
       >
         <Dock 
           items={items}
-          panelHeight={36}
-          baseItemSize={28}
-          magnification={40}
+          panelHeight={44}
+          baseItemSize={36}
+          magnification={48}
         />
       </div>
 
